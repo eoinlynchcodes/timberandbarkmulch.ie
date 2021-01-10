@@ -29,12 +29,13 @@ export default function SigninScreen(props) {
   return (
     <div>
       <form className="form" onSubmit={submitHandler}>
-        <div>
+      <ul className="form-container">
+        <li>
           <h1>Sign In</h1>
-        </div>
+        </li>
         {loading && <LoadingBox></LoadingBox>}
         {error && <MessageBox variant="danger">{error}</MessageBox>}
-        <div>
+        <li>
           <label htmlFor="email">Email address</label>
           <input
             type="email"
@@ -43,8 +44,8 @@ export default function SigninScreen(props) {
             required
             onChange={(e) => setEmail(e.target.value)}
           ></input>
-        </div>
-        <div>
+        </li>
+        <li>
           <label htmlFor="password">Password</label>
           <input
             type="password"
@@ -53,14 +54,14 @@ export default function SigninScreen(props) {
             required
             onChange={(e) => setPassword(e.target.value)}
           ></input>
-        </div>
-        <div>
+        </li>
+        <li>
           <label />
           <button className="primary" type="submit">
             Sign In
           </button>
-        </div>
-        <div>
+        </li>
+        <li>
           <label />
           <div>
             New customer?{' '}
@@ -68,7 +69,8 @@ export default function SigninScreen(props) {
               Create your account
             </Link>
           </div>
-        </div>
+        </li>
+        </ul>
       </form>
     </div>
   );
