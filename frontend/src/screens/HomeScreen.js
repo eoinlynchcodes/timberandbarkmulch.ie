@@ -289,7 +289,6 @@ export default function HomeScreen(props) {
           </div>
         </section>
       </div>
-      <Footer />
     </>
   );
 }

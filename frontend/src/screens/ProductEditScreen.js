@@ -87,7 +87,7 @@ export default function ProductEditScreen(props) {
 
   return (
     <div>
-      <form className="form" onSubmit={submitHandler}>
+      <form className="editingform" onSubmit={submitHandler}>
         <div>
           <h1>Edit Product {productId}</h1>
         </div>
@@ -101,6 +101,7 @@ export default function ProductEditScreen(props) {
           <>
             <div>
               <label htmlFor="name">Name</label>
+              <br/>
               <input
                 id="name"
                 type="text"
@@ -108,9 +109,11 @@ export default function ProductEditScreen(props) {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               ></input>
-            </div>
+            </div>              <br/>
+
             <div>
               <label htmlFor="price">Price</label>
+              <br/>
               <input
                 id="price"
                 type="text"
@@ -118,9 +121,11 @@ export default function ProductEditScreen(props) {
                 value={price}
                 onChange={(e) => setPrice(e.target.value)}
               ></input>
-            </div>
+            </div>              <br/>
+
             <div>
               <label htmlFor="image">Image</label>
+              <br/>
               <input
                 id="image"
                 type="text"
@@ -128,9 +133,11 @@ export default function ProductEditScreen(props) {
                 value={image}
                 onChange={(e) => setImage(e.target.value)}
               ></input>
-            </div>
+            </div>              <br/>
+
             <div>
               <label htmlFor="imageFile">Image File</label>
+              <br/>
               <input
                 type="file"
                 id="imageFile"
@@ -141,9 +148,11 @@ export default function ProductEditScreen(props) {
               {errorUpload && (
                 <MessageBox variant="danger">{errorUpload}</MessageBox>
               )}
-            </div>
+            </div>              <br/>
+
             <div>
               <label htmlFor="category">Category</label>
+              <br/>
               <input
                 id="category"
                 type="text"
@@ -151,9 +160,12 @@ export default function ProductEditScreen(props) {
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
               ></input>
-            </div>
+            </div>              <br/>
+
+
             <div>
               <label htmlFor="brand">Brand</label>
+              <br/>
               <input
                 id="brand"
                 type="text"
@@ -161,9 +173,11 @@ export default function ProductEditScreen(props) {
                 value={brand}
                 onChange={(e) => setBrand(e.target.value)}
               ></input>
-            </div>
+            </div>              <br/>
+
             <div>
               <label htmlFor="countInStock">Count In Stock</label>
+              <br/>
               <input
                 id="countInStock"
                 type="text"
@@ -171,18 +185,21 @@ export default function ProductEditScreen(props) {
                 value={countInStock}
                 onChange={(e) => setCountInStock(e.target.value)}
               ></input>
-            </div>
+            </div>              <br/>
+
             <div>
               <label htmlFor="description">Description</label>
+              <br/>
               <textarea
                 id="description"
-                rows="3"
+                rows="8"
                 type="text"
                 placeholder="Enter description"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
               ></textarea>
-            </div>
+            </div>              <br/>
+
             <div>
               <label></label>
               <button className="primary" type="submit">

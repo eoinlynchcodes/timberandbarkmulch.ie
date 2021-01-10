@@ -1056,3 +1056,31 @@ tbody > tr:nth-child(odd) {
   }
   
 }
+
+.ordering-box{
+  display: flex;
+  flex-direction: column;
+}
+
+.order-screen{
+  display: flex;
+  flex-direction: column-reverse;
+  min-height: 100vh;
+}
+
+.order-box{
+  display: flex;
+  border: 1px solid grey;
+  flex-direction: column;
+  border-radius: 12px;
+  width: 90%;
+  margin: 2rem auto;
+  padding: 2rem 2rem;
+}
+
+.placeorderbutton{
+  background-color: green;
+  color: white;
+  border: 2px solid black;
+  padding: 1rem;
+}

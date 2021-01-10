@@ -26,8 +26,10 @@ import SearchScreen from './screens/SearchScreen';
 import { listProductCategories } from './actions/productActions';
 import MapScreen from './screens/MapScreen';
 import Navigation from './components/Navigation';
+import Footer from './components/Footer';
 
 function App() {
+
   const cart = useSelector((state) => state.cart);
   const [sidebarIsOpen, setSidebarIsOpen] = useState(false);
   const { cartItems } = cart;
@@ -126,7 +128,7 @@ function App() {
 
           <Route path="/" component={HomeScreen} exact></Route>
         </main>
-        <footer className="row center">All right reserved</footer>
+        <footer className="row center"><Footer/></footer>
       </div>
     </BrowserRouter>
   );
