@@ -18,7 +18,8 @@ export default function PlaceOrderScreen(props) {
   cart.itemsPrice = toPrice(
     cart.cartItems.reduce((a, c) => a + c.qty * c.price, 0)
   );
-  cart.shippingPrice = cart.itemsPrice > 100 ? toPrice(0) : toPrice(10);
+  // cart.shippingPrice = cart.itemsPrice > 100 ? toPrice(0) : toPrice(10);
+  cart.shippingPrice = 0;
   // cart.taxPrice = toPrice(0.15 * cart.itemsPrice);
   cart.taxPrice = 0;
   cart.totalPrice = cart.itemsPrice + cart.shippingPrice + cart.taxPrice;
@@ -43,7 +44,10 @@ export default function PlaceOrderScreen(props) {
                   <strong>Name:</strong><br/> {cart.shippingAddress.fullName} <br /><br />
                   <strong>Address: </strong><br/> {cart.shippingAddress.address},<br/>
                   {cart.shippingAddress.city},<br/>
-                  {cart.shippingAddress.country}, <br/> {cart.shippingAddress.postalCode}
+                  {cart.shippingAddress.country}, <br/> {cart.shippingAddress.postalCode},
+                  <br/><br/>
+                  {cart.shippingAddress.instructions}
+                  {console.log(cart)}
                 </p>
               </div>
             {/* <li>

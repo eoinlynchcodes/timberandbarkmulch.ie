@@ -9,9 +9,7 @@ export default function ShippingAddressScreen(props) {
   const { userInfo } = userSignin;
   const cart = useSelector((state) => state.cart);
   const { shippingAddress } = cart;
-  const [instructions, setInstructions] = useState(
-    shippingAddress.instructions
-  );
+
   if (!userInfo) {
     props.history.push("/signin");
   }
@@ -20,15 +18,20 @@ export default function ShippingAddressScreen(props) {
   const [city, setCity] = useState(shippingAddress.city);
   const [postalCode, setPostalCode] = useState(shippingAddress.postalCode);
   const [country, setCountry] = useState(shippingAddress.country);
-  const [paymentMethod, setPaymentMethod] = useState('PayPal');
+  const [paymentMethod, setPaymentMethod] = useState("PayPal");
+  const [instructions, setInstructions] = useState(
+    shippingAddress.instructions
+  );
   const dispatch = useDispatch();
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(saveShippingAddress({ fullName, address, city, postalCode, country }));
+    dispatch(
+      saveShippingAddress({ fullName, address, city, postalCode, country, instructions })
+    );
     dispatch(savePaymentMethod(paymentMethod));
-      props.history.push('/placeorder');  
-    };
+    props.history.push("/placeorder");
+  };
 
   return (
     <div>

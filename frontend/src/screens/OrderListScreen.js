@@ -47,12 +47,14 @@ export default function OrderListScreen(props) {
               <th>TOTAL</th>
               <th>PAID</th>
               <th>DELIVERED</th>
+              <th>Delivery Instructions</th>
               <th>ACTIONS</th>
             </tr>
           </thead>
           <tbody>
             {orders.map((order) => (
               <tr key={order._id}>
+                {console.log(order)}
                 <td>{order._id}</td>
                 <td>{order.user.name}</td>
                 <td>{order.createdAt.substring(0, 10)}</td>
@@ -63,6 +65,7 @@ export default function OrderListScreen(props) {
                     ? order.deliveredAt.substring(0, 10)
                     : 'No'}
                 </td>
+                <td>{order.shippingAddress.instructions}</td>
                 <td>
                   <button
                     type="button"

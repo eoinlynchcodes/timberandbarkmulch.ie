@@ -37,7 +37,8 @@ export default function OrderScreen(props) {
       const { data } = await Axios.get("/api/config/paypal");
       const script = document.createElement("script");
       script.type = "text/javascript";
-      script.src = `https://www.paypal.com/sdk/js?client-id=${data}`;
+      const currency = "EUR";
+      script.src = `https://www.paypal.com/sdk/js?currency=${currency}&client-id=${data}`;
       script.async = true;
       script.onload = () => {
         setSdkReady(true);
@@ -80,24 +81,23 @@ export default function OrderScreen(props) {
       {/* <h1>Order {order._id}</h1> */}
       <div className="order-screen">
         <div className="col-2">
-              <div className="order-box">
-                <h2>Shipping</h2>
-                <p>
-                  <strong>Name:</strong> {order.shippingAddress.fullName} <br />
-                  <strong>Address: </strong> {order.shippingAddress.address},
-                  {order.shippingAddress.city},{" "}
-                  {order.shippingAddress.postalCode},
-                  {order.shippingAddress.country}
-                </p>
-                {order.isDelivered ? (
-                  <MessageBox variant="success">
-                    Delivered at {order.deliveredAt}
-                  </MessageBox>
-                ) : (
-                  <MessageBox variant="danger">Not Delivered</MessageBox>
-                )}
-              </div>
-              {/* <div className="card card-body">
+          <div className="order-box">
+            <h2>Shipping</h2>
+            <p>
+              <strong>Name:</strong> {order.shippingAddress.fullName} <br />
+              <strong>Address: </strong> {order.shippingAddress.address},
+              {order.shippingAddress.city}, {order.shippingAddress.postalCode},
+              {order.shippingAddress.country}
+            </p>
+            {order.isDelivered ? (
+              <MessageBox variant="success">
+                Delivered at {order.deliveredAt}
+              </MessageBox>
+            ) : (
+              <MessageBox variant="danger">Not Delivered</MessageBox>
+            )}
+          </div>
+          {/* <div className="card card-body">
                 <h2>Payment</h2>
                 <p>
                   <strong>Method:</strong> {order.paymentMethod}
@@ -111,41 +111,41 @@ export default function OrderScreen(props) {
                 )}
               </div> */}
 
-              <div className="order-box">
-                <h2>Order Items</h2>
-                <ul>
-                  {order.orderItems.map((item) => (
-                    <li key={item.product}>
-                      <div className="row">
-                        <div>
-                          <img
-                            src={item.image}
-                            alt={item.name}
-                            className="small"
-                          ></img>
-                        </div>
-                        <div className="min-30">
-                          <Link to={`/product/${item.product}`}>
-                            {item.name}
-                          </Link>
-                        </div>
+          <div className="order-box">
+            <h2>Order Items</h2>
+            <ul>
+              {order.orderItems.map((item) => (
+                <li key={item.product}>
+                  <div className="row">
+                    <div>
+                      <img
+                        src={item.image}
+                        alt={item.name}
+                        className="small"
+                      ></img>
+                    </div>
+                    <div className="min-30">
+                      <Link to={`/product/${item.product}`}>{item.name}</Link>
+                    </div>
 
-                        <div>
-                          {item.qty} x €{item.price} = €{item.qty * item.price}
-                        </div>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+                    <div>
+                      {item.qty} x €{item.price} = €{item.qty * item.price}
+                    </div>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
+        
         <div className="col-1">
           <div className="order-box">
             <h2>Pay Here:</h2>
             <div className="row">
               <div>Items</div>
               <div>€{order.itemsPrice.toFixed(2)}</div>
-            </div><br/>
+            </div>
+            <br />
             {/* <div className="row">
               <div>Shipping</div>
               <div>€{order.shippingPrice.toFixed(2)}</div>
@@ -162,7 +162,7 @@ export default function OrderScreen(props) {
                 <strong>€{order.totalPrice.toFixed(2)}</strong>
               </div>
             </div>
-            <br/>
+            <br />
             {!order.isPaid && (
               <div className="centerThis">
                 {!sdkReady ? (
